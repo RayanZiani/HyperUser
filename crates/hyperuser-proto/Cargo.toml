@@ -1,0 +1,8 @@
+[package]
+name = "hyperuser-proto"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+
+[dependencies]
+bitflags = { workspace = true }

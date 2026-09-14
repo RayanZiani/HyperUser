@@ -1,0 +1,17 @@
+[workspace]
+members = [
+    "crates/hyperuser-proto",
+    "crates/hyperuser-core",
+    "crates/hyperuser-cli",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+authors = ["ZIANI"]
+
+[workspace.dependencies]
+hyperuser-proto = { path = "crates/hyperuser-proto" }
+bitflags = "2.8"
+log = "0.4"

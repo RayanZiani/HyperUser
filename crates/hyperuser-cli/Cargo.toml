@@ -1,0 +1,12 @@
+[package]
+name = "hyperuser-cli"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+
+[dependencies]
+hyperuser-proto = { workspace = true }
+clap = { version = "4", features = ["derive"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = ["Win32_System_Memory", "Win32_Foundation"] }

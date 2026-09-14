@@ -1,0 +1,22 @@
+[package]
+name = "hyperuser-core"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+
+[dependencies]
+hyperuser-proto = { workspace = true }
+uefi = { version = "0.33.0", features = ["alloc", "logger"] }
+bitflags = { workspace = true }
+log = { workspace = true }
+spin = { version = "0.9", default-features = false, features = ["spin_mutex"] }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+lto = true
+opt-level = 3
+overflow-checks = false
+codegen-units = 1

@@ -1,0 +1,18 @@
+[tasks.build-core]
+command = "cargo"
+args = ["build", "--release", "-p", "hyperuser-core", "--target", "x86_64-unknown-uefi"]
+
+[tasks.build-cli]
+command = "cargo"
+args = ["build", "--release", "-p", "hyperuser-cli", "--target", "x86_64-pc-windows-msvc"]
+
+[tasks.build-all]
+dependencies = ["build-core", "build-cli"]
+
+[tasks.qemu]
+script_runner = "@shell"
+script = [
+    "mkdir -p esp/efi/boot",
+    "cp target/x86_64-unknown-uefi/release/hyperuser-core.efi esp/efi/boot/bootx64.efi",
+    "qemu-system-x86_64 -bios ovmf/OVMF.fd -drive format=raw,file=fat:rw:esp -net none"
+]
